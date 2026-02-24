@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Link from "next/link";
+import { Button } from "@/shared/components/Button";
 import { ParticleSphere } from "./ParticleSphere";
 
 export function CTASection() {
@@ -11,76 +11,38 @@ export function CTASection() {
 
   return (
     <section
-      className="section"
+      className="section section-border relative overflow-hidden"
       ref={ref}
-      style={{ position: "relative", overflow: "hidden", paddingBlock: "8rem" }}
     >
       {/* Three.js Background */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          right: "-15%",
-          transform: "translateY(-50%)",
-          width: 800,
-          height: 800,
-          zIndex: 0,
-          opacity: 0.6,
-          pointerEvents: "none",
-        }}
-      >
+      <div className="absolute top-1/2 -translate-y-1/2 -right-[15%] w-[800px] h-[800px] pointer-events-none opacity-60 z-0">
         <ParticleSphere />
       </div>
 
-      <div
-        className="container-main"
-        style={{ position: "relative", zIndex: 1 }}
-      >
+      <div className="container-main relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ maxWidth: 600 }}
+          className="max-w-[600px]"
         >
-          <h2
-            style={{
-              fontSize: "clamp(2.5rem, 6vw, 4rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.04em",
-              marginBottom: "1.5rem",
-            }}
-          >
+          <h2 className="heading-section mb-6">
             Start monitoring your API with confidence.
           </h2>
-          <p
-            className="text-secondary"
-            style={{
-              fontSize: "1.1rem",
-              lineHeight: 1.6,
-              marginBottom: "2.5rem",
-              maxWidth: 480,
-            }}
-          >
+          <p className="text-text-secondary text-lg leading-relaxed mb-10 max-w-[480px]">
             Get real-time visibility into traffic, performance, and errors. No
             setup hassle. No hidden complexity.
           </p>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <Link
-              href="/pricing"
-              className="btn-brand"
-              style={{ padding: "0.75rem 1.6rem", fontSize: "0.85rem" }}
-            >
-              GET STARTED ▶
-            </Link>
-            <Link
+          <div className="flex items-center gap-3">
+            <Button text="GET STARTED" href="/pricing" />
+            <Button
+              text="REQUEST DEMO"
               href="/contact"
-              className="btn-outline"
-              style={{ padding: "0.75rem 1.6rem", fontSize: "0.85rem" }}
-            >
-              REQUEST DEMO
-            </Link>
+              variant="outline"
+              rightIcon={false}
+              color="rgba(255, 255, 255, 0.14)"
+            />
           </div>
         </motion.div>
       </div>

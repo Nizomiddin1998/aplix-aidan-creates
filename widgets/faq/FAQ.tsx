@@ -8,7 +8,7 @@ const FAQS = [
   {
     question: "What is Aplix?",
     answer:
-      "Aplix is a lightweight API monitoring tool that gives you real-time visibility into traffic, performance, errors, and usage. It’s built to help teams understand what’s happening across their APIs without complex setup or noisy dashboards.",
+      "Aplix is a lightweight API monitoring tool that gives you real-time visibility into traffic, performance, errors, and usage. It's built to help teams understand what's happening across their APIs without complex setup or noisy dashboards.",
   },
   {
     question: "Can I upgrade my plan at any time?",
@@ -38,77 +38,50 @@ export function FAQ() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      className="section"
-      id="faq"
-      ref={ref}
-      style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
-    >
+    <section className="section section-border" id="faq" ref={ref}>
       <div className="container-main">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "0.8fr 1.2fr",
-            gap: "4rem",
-          }}
-          className="grid-cols-1 md:grid-cols-2"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Left — title */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5 }}
           >
-            <h2
-              style={{
-                fontSize: "clamp(1.7rem, 3.5vw, 2.5rem)",
-                fontWeight: 700,
-                lineHeight: 1.1,
-                marginBottom: "1rem",
-                maxWidth: 300,
-              }}
-            >
+            <p className="label mb-1.5">FAQ</p>
+            <h2 className="heading-section max-w-[300px] mb-4">
               Your Questions. Clearly answered.
             </h2>
-            <p
-              className="text-secondary"
-              style={{ fontSize: "0.9rem", lineHeight: 1.6, maxWidth: 320 }}
-            >
+            <p className="text-text-secondary text-sm leading-relaxed max-w-[320px]">
               Fast, clear, and easy to understand.
             </p>
           </motion.div>
 
           {/* Right — accordion */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          <div className="flex flex-col">
             {FAQS.map((faq, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                className="border-b border-white/[0.06]"
               >
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  style={{
-                    width: "100%",
-                    padding: "1.2rem 0",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    background: "none",
-                    border: "none",
-                    textAlign: "left",
-                    cursor: "pointer",
-                    color: open === i ? "#fff" : "rgba(255,255,255,0.7)",
-                    transition: "color 0.2s",
-                  }}
+                  className={`w-full py-5 flex items-center justify-between bg-transparent border-none text-left cursor-pointer transition-colors duration-200 ${
+                    open === i ? "text-white" : "text-white/70"
+                  }`}
                 >
-                  <span style={{ fontSize: "0.9rem", fontWeight: 600 }}>
+                  <span className="text-base font-semibold">
                     {faq.question}
                   </span>
-                  {open === i ? <Minus size={16} /> : <Plus size={16} />}
+                  {open === i ? (
+                    <Minus size={16} className="flex-shrink-0 text-brand" />
+                  ) : (
+                    <Plus size={16} className="flex-shrink-0 text-white/50" />
+                  )}
                 </button>
+
                 <AnimatePresence>
                   {open === i && (
                     <motion.div
@@ -116,17 +89,9 @@ export function FAQ() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      style={{ overflow: "hidden" }}
+                      className="overflow-hidden"
                     >
-                      <p
-                        className="text-secondary"
-                        style={{
-                          fontSize: "0.82rem",
-                          lineHeight: 1.6,
-                          paddingBottom: "1.5rem",
-                          maxWidth: "90%",
-                        }}
-                      >
+                      <p className="text-text-secondary text-sm leading-relaxed pb-6 max-w-[90%]">
                         {faq.answer}
                       </p>
                     </motion.div>

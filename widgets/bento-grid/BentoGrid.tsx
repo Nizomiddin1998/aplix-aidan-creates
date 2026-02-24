@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { BarChart } from "./components/BarChart";
+import { StatTag } from "./components/StatTag";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -10,59 +12,22 @@ const fadeUp = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.07,
+      delay: i * 0.08,
       duration: 0.5,
       ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
     },
   }),
 };
 
-const CARDS = [
-  {
-    id: 1,
-    title: "Track API health",
-    desc: "Monitor traffic, response times, status codes, and error rates in one clear view.",
-    image:
-      "https://framerusercontent.com/images/0m7n1838c9KN5e2GNrwCpLgSM.webp",
-    wide: false,
-  },
-  {
-    id: 2,
-    title: "Backend at a glance",
-    desc: "Requests, performance, alerts, and usage, all summarized without losing detail.",
-    image:
-      "https://framerusercontent.com/images/9LKnnWcx8OELyDZDpkOLbWnlkk.webp",
-    wide: true,
-  },
-  {
-    id: 3,
-    title: "Spot issues early",
-    desc: "Alert thresholds surface anomalies before they become customer problems.",
-    image: null,
-    wide: false,
-    stat: {
-      value: "$8,097",
-      label: "Monthly",
-      value2: "$312,134",
-      label2: "Yearly",
-    },
-  },
-  {
-    id: 4,
-    title: "Set it and forget it",
-    desc: "Automated dashboards that update as your API grows — no manual tuning needed.",
-    image: null,
-    wide: false,
-    stat: { value: "99.99%", label: "Uptime SLA" },
-  },
-];
+const CARD_BASE =
+  "corner-bracket bg-bg-surface border border-border rounded-sm overflow-hidden relative";
 
 export function BentoGrid() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="section" ref={ref}>
+    <section className="section section-border" ref={ref}>
       <div className="container-main">
         {/* Header */}
         <motion.div
@@ -70,351 +35,130 @@ export function BentoGrid() {
           initial="hidden"
           animate={inView ? "show" : "hidden"}
           custom={0}
-          style={{ marginBottom: "2.5rem" }}
+          className="mb-10 max-w-[560px]"
         >
-          <p className="label" style={{ marginBottom: "0.6rem" }}>
-            Features
-          </p>
-          <h2
-            style={{
-              fontSize: "clamp(1.7rem, 3.5vw, 2.5rem)",
-              fontWeight: 700,
-              maxWidth: 500,
-              lineHeight: 1.2,
-            }}
-          >
-            Everything your team needs to stay on top
+          <p className="label mb-1.5">Features</p>
+          <h2 className="heading-section">
+            See what&apos;s happening.{" "}
+            <span className="text-faded">As it happens.</span>
           </h2>
+          <p className="text-text-secondary mt-3 text-sm leading-relaxed">
+            Designed for real-time insight. Metrics load instantly, charts stay
+            responsive, and the interface never gets in the way of your
+            workflow.
+          </p>
         </motion.div>
 
         {/* Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 8,
-          }}
-        >
-          {/* Card 1 — narrow */}
+        <div className="grid grid-cols-3 gap-2">
+          {/* Card 1 — Track API health */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
             custom={1}
-            className="corner-bracket"
-            style={{
-              gridColumn: "1 / 2",
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: 4,
-              padding: "1.4rem",
-              minHeight: 300,
-              overflow: "hidden",
-              position: "relative",
-            }}
+            className={`${CARD_BASE} col-span-1 min-h-[300px] flex flex-col p-5`}
           >
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 600,
-                color: "var(--brand)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "0.5rem",
-              }}
-            >
+            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
               Track API health
             </p>
-            <p
-              className="text-secondary"
-              style={{
-                fontSize: "0.8rem",
-                lineHeight: 1.5,
-                marginBottom: "1rem",
-              }}
-            >
+            <p className="text-text-secondary text-sm leading-relaxed mb-5">
               Monitor traffic, response times, status codes, and error rates in
               one clear view.
             </p>
-            {/* Candlestick chart image */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: 160,
-              }}
-            >
-              <Image
-                src="https://framerusercontent.com/images/0m7n1838c9KN5e2GNrwCpLgSM.webp"
-                alt="API health chart"
-                fill
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center bottom",
-                  opacity: 0.8,
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(to bottom, var(--surface) 0%, transparent 50%)",
-                }}
-              />
+            <div className="flex-1 flex flex-col justify-end">
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-sm pt-3 px-3 overflow-hidden">
+                <BarChart />
+              </div>
             </div>
           </motion.div>
 
-          {/* Card 2 — wide (spans 2 cols) */}
+          {/* Card 2 — Backend at a glance */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
             custom={2}
-            className="corner-bracket"
-            style={{
-              gridColumn: "2 / 4",
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: 4,
-              padding: "1.4rem",
-              minHeight: 300,
-              overflow: "hidden",
-              position: "relative",
-            }}
+            className={`${CARD_BASE} col-span-2 min-h-[300px] p-5`}
           >
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 600,
-                color: "var(--brand)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "0.5rem",
-              }}
-            >
+            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
               Backend at a glance
             </p>
-            <p
-              className="text-secondary"
-              style={{
-                fontSize: "0.8rem",
-                lineHeight: 1.5,
-                marginBottom: "1rem",
-              }}
-            >
+            <p className="text-text-secondary text-sm leading-relaxed mb-4">
               Requests, performance, alerts, and usage, all summarized without
               losing detail.
             </p>
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: 200,
-              }}
-            >
+            <div className="absolute bottom-0 left-0 right-0 h-[200px]">
               <Image
                 src="https://framerusercontent.com/images/9LKnnWcx8OELyDZDpkOLbWnlkk.webp"
                 alt="Dashboard overview"
                 fill
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "top center",
-                  opacity: 0.75,
-                }}
+                className="object-cover object-top opacity-75"
               />
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(to bottom, var(--surface) 0%, transparent 60%)",
-                }}
-              />
+              <div className="absolute inset-0 bg-surface-fade" />
             </div>
           </motion.div>
 
-          {/* Card 3 — stats */}
+          {/* Card 3 — Spot issues early */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
             custom={3}
-            className="corner-bracket"
-            style={{
-              gridColumn: "1 / 2",
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: 4,
-              padding: "1.4rem",
-              minHeight: 200,
-            }}
+            className={`${CARD_BASE} col-span-1 min-h-[180px] p-5`}
           >
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 600,
-                color: "var(--brand)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "0.5rem",
-              }}
-            >
+            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
               Spot issues early
             </p>
-            <p
-              className="text-secondary"
-              style={{
-                fontSize: "0.8rem",
-                lineHeight: 1.5,
-                marginBottom: "1.5rem",
-              }}
-            >
+            <p className="text-text-secondary text-sm leading-relaxed mb-5">
               Alert thresholds surface anomalies before they become customer
               problems.
             </p>
-            <div style={{ display: "flex", gap: "2rem" }}>
-              <div>
-                <div
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    letterSpacing: "-0.03em",
-                  }}
-                >
-                  $8,097
-                </div>
-                <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>
-                  Monthly
-                </div>
-              </div>
-              <div>
-                <div
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    letterSpacing: "-0.03em",
-                  }}
-                >
-                  $312,134
-                </div>
-                <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>
-                  Yearly
-                </div>
-              </div>
+            <div className="flex gap-3 flex-wrap">
+              <StatTag label="Monthly" value="$8,097" />
+              <StatTag label="Yearly" value="$312,134" />
             </div>
           </motion.div>
 
-          {/* Card 4 — uptime stat */}
+          {/* Card 4 — Uptime */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
             custom={4}
-            className="corner-bracket"
-            style={{
-              gridColumn: "2 / 3",
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: 4,
-              padding: "1.4rem",
-              minHeight: 200,
-            }}
+            className={`${CARD_BASE} col-span-1 min-h-[180px] p-5`}
           >
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 600,
-                color: "var(--brand)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "0.5rem",
-              }}
-            >
+            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
               Set it and forget it
             </p>
-            <p
-              className="text-secondary"
-              style={{
-                fontSize: "0.8rem",
-                lineHeight: 1.5,
-                marginBottom: "1.5rem",
-              }}
-            >
+            <p className="text-text-secondary text-sm leading-relaxed mb-5">
               Automated dashboards that update as your API grows.
             </p>
-            <div>
-              <div
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: 700,
-                  letterSpacing: "-0.04em",
-                  color: "var(--brand)",
-                }}
-              >
-                99.99%
-              </div>
-              <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>
-                Uptime SLA
-              </div>
+            <div className="text-4xl font-bold tracking-tightest text-brand leading-none">
+              99.99%
             </div>
+            <div className="text-[0.7rem] text-text-muted mt-1">Uptime SLA</div>
           </motion.div>
 
-          {/* Card 5 — latency */}
+          {/* Card 5 — Latency */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
             custom={5}
-            className="corner-bracket"
-            style={{
-              gridColumn: "3 / 4",
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: 4,
-              padding: "1.4rem",
-              minHeight: 200,
-            }}
+            className={`${CARD_BASE} col-span-1 min-h-[180px] p-5`}
           >
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 600,
-                color: "var(--brand)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "0.5rem",
-              }}
-            >
+            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
               Latency tracking
             </p>
-            <p
-              className="text-secondary"
-              style={{
-                fontSize: "0.8rem",
-                lineHeight: 1.5,
-                marginBottom: "1.5rem",
-              }}
-            >
+            <p className="text-text-secondary text-sm leading-relaxed mb-5">
               P50/P95/P99 breakdown across every endpoint, always fresh.
             </p>
-            <div>
-              <div
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: 700,
-                  letterSpacing: "-0.04em",
-                }}
-              >
-                42ms
-              </div>
-              <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>
-                P95 latency
-              </div>
+            <div className="text-4xl font-bold tracking-tightest text-white leading-none">
+              42ms
+            </div>
+            <div className="text-[0.7rem] text-text-muted mt-1">
+              P95 latency
             </div>
           </motion.div>
         </div>

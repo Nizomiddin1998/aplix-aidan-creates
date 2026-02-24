@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Twitter, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Twitter, Linkedin, Github } from "lucide-react";
+import { ApixLogo } from "@/shared/components/ApixLogo";
 
 const LINKS = [
   { label: "About", href: "/about" },
@@ -13,72 +14,24 @@ const LINKS = [
 
 const SOCIALS = [
   { icon: Twitter, href: "#" },
-  { icon: Facebook, href: "#" },
-  { icon: Instagram, href: "#" },
   { icon: Linkedin, href: "#" },
+  { icon: Github, href: "#" },
 ];
 
 export function Footer() {
   return (
-    <footer
-      style={{
-        borderTop: "1px solid rgba(255,255,255,0.07)",
-        paddingBlock: "4rem 2rem",
-      }}
-    >
+    <footer className="border-t border-white/[0.07] pt-16 pb-8">
       <div className="container-main">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "4rem",
-            marginBottom: "4rem",
-          }}
-          className="grid-cols-1 md:grid-cols-2"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
           {/* Left — Logo and Links */}
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <span
-                style={{
-                  width: 22,
-                  height: 22,
-                  background: "#fff",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M6 1L11 10H1L6 1Z" fill="#000" />
-                </svg>
-              </span>
-              <span
-                style={{ fontWeight: 700, fontSize: "1rem", color: "#fff" }}
-              >
-                Aplix
-              </span>
-            </div>
-
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
+          <div className="flex flex-col gap-10">
+            <ApixLogo size={22} />
+            <div className="flex flex-wrap gap-6">
               {LINKS.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: 500,
-                    color: "rgba(255,255,255,0.5)",
-                    textDecoration: "none",
-                    transition: "color 0.2s",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
-                  }
+                  className="text-xs font-medium text-white/50 no-underline transition-colors duration-200 hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -87,51 +40,26 @@ export function Footer() {
           </div>
 
           {/* Right — Newsletter */}
-          <div
-            style={{ maxWidth: 360, marginLeft: "auto" }}
-            className="ml-0 md:ml-auto"
-          >
-            <p
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 600,
-                color: "#fff",
-                marginBottom: "0.8rem",
-              }}
-            >
+          <div className="max-w-[360px] md:ml-auto">
+            <p className="text-xs font-semibold text-white mb-3">
               Join our newsletter
             </p>
-            <div style={{ display: "flex", gap: 4 }} className="corner-bracket">
+            <div className="corner-bracket flex gap-1">
               <input
                 type="email"
                 placeholder="name@email.com"
-                style={{
-                  flex: 1,
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: 4,
-                  padding: "0.6rem 0.8rem",
-                  color: "#fff",
-                  fontSize: "0.8rem",
-                  outline: "none",
-                }}
+                className="flex-1 bg-white/[0.04] border border-white/10 rounded-sm px-3 py-2 text-white text-xs outline-none placeholder:text-white/30 focus:border-white/20 transition-colors"
               />
-              <button
-                className="btn-brand"
-                style={{ padding: "0.6rem 1.1rem", fontSize: "0.75rem" }}
-              >
+              <button className="btn-brand px-4 py-2 text-[0.75rem]">
                 SUBSCRIBE
               </button>
             </div>
-            <p
-              style={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.4)",
-                marginTop: "0.8rem",
-              }}
-            >
+            <p className="text-[0.65rem] text-white/40 mt-2">
               By clicking, you&apos;re agreeing to our{" "}
-              <Link href="/terms" style={{ color: "inherit" }}>
+              <Link
+                href="/terms"
+                className="text-inherit hover:text-white/60 transition-colors"
+              >
                 Terms
               </Link>
               .
@@ -139,61 +67,34 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom line */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            paddingTop: "1.5rem",
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-            flexDirection: "column",
-            gap: "1rem",
-          }}
-          className="md:flex-row"
-        >
-          <div
-            style={{
-              fontSize: "0.75rem",
-              color: "rgba(255,255,255,0.4)",
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-            }}
-          >
+        {/* Bottom bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-white/[0.06]">
+          <div className="flex items-center gap-2 text-[0.75rem] text-white/40">
             <span>
-              © 2026 Aplix bu{" "}
-              <span style={{ color: "var(--brand)" }}>AidanCreates</span>
+              © 2026 Aplix by <span className="text-brand">AidanCreates</span>
             </span>
-            <span style={{ marginInline: 4 }}>·</span>
+            <span className="mx-1">·</span>
             <Link
               href="/terms"
-              style={{ color: "inherit", textDecoration: "none" }}
+              className="text-inherit no-underline hover:text-white/60 transition-colors"
             >
               Terms
             </Link>
-            <span style={{ marginInline: 4 }}>·</span>
+            <span className="mx-1">·</span>
             <Link
               href="/privacy"
-              style={{ color: "inherit", textDecoration: "none" }}
+              className="text-inherit no-underline hover:text-white/60 transition-colors"
             >
               Privacy
             </Link>
           </div>
 
-          <div style={{ display: "flex", gap: "1rem" }}>
+          <div className="flex gap-4">
             {SOCIALS.map((soc, i) => (
               <Link
                 key={i}
                 href={soc.href}
-                style={{
-                  color: "rgba(255,255,255,0.4)",
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(255,255,255,0.4)")
-                }
+                className="text-white/40 transition-colors duration-200 hover:text-white"
               >
                 <soc.icon size={16} />
               </Link>

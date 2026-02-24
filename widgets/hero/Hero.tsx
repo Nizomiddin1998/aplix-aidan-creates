@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Button } from "@/shared/components/Button";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 
@@ -26,69 +26,33 @@ const TRUST = [
 
 export function Hero() {
   return (
-    <section
-      style={{
-        paddingTop: 56,
-        minHeight: "100vh",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Subtle dark-red radial glow at center-top */}
+    <section className="relative min-h-screen overflow-hidden pt-14">
+      {/* Top center radial glow */}
       <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] pointer-events-none z-0"
         style={{
-          position: "absolute",
-          top: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100%",
-          height: 600,
           background:
-            "radial-gradient(circle at center 20%, rgba(232,79,23,0.12) 0%, transparent 60%)",
-          pointerEvents: "none",
-          zIndex: 0,
+            "radial-gradient(circle at center 20%, rgba(245,73,0,0.12) 0%, transparent 60%)",
         }}
       />
 
-      {/* Strong bottom glow behind dashboard */}
+      {/* Bottom glow behind dashboard */}
       <div
+        className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[120%] h-[400px] pointer-events-none z-0"
         style={{
-          position: "absolute",
-          bottom: "10%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "120%",
-          height: 400,
           background:
-            "radial-gradient(circle at center bottom, rgba(232,79,23,0.2) 0%, transparent 60%)",
-          pointerEvents: "none",
-          zIndex: 0,
+            "radial-gradient(circle at center bottom, rgba(245,73,0,0.2) 0%, transparent 60%)",
         }}
       />
 
-      <div
-        className="container-main"
-        style={{
-          paddingTop: "6rem",
-          paddingBottom: "4rem",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
+      <div className="container-main pt-24 pb-16 relative z-10">
         {/* Headline */}
         <motion.h1
           variants={fadeUp}
           initial="hidden"
           animate="show"
           custom={0}
-          style={{
-            fontSize: "clamp(2.4rem, 6vw, 4.2rem)",
-            fontWeight: 700,
-            maxWidth: 700,
-            lineHeight: 1.02,
-            letterSpacing: "-0.04em",
-            marginBottom: "1.4rem",
-          }}
+          className="heading-hero max-w-[700px] mb-6 font-bold"
         >
           Your API. Fully visible.
           <br />
@@ -101,13 +65,7 @@ export function Hero() {
           initial="hidden"
           animate="show"
           custom={0.08}
-          style={{
-            fontSize: "1.1rem",
-            color: "var(--text-secondary)",
-            maxWidth: 520,
-            lineHeight: 1.5,
-            marginBottom: "2.2rem",
-          }}
+          className="text-text-secondary text-lg leading-snug max-w-[520px] mb-9"
         >
           Track API traffic, latency, errors, and usage in real time. A
           streamlined dashboard for teams focused on reliability.
@@ -119,32 +77,16 @@ export function Hero() {
           initial="hidden"
           animate="show"
           custom={0.16}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-            flexWrap: "wrap",
-            marginBottom: "1.8rem",
-          }}
+          className="flex items-center gap-3 flex-wrap mb-7"
         >
-          <Link
-            href="/pricing"
-            className="btn-brand"
-            style={{ fontSize: "0.85rem", padding: "0.7rem 1.4rem" }}
-          >
-            GET STARTED ▶
-          </Link>
-          <Link
+          <Button text="GET STARTED" href="/pricing" />
+          <Button
+            text="REQUEST DEMO"
             href="/contact"
-            className="btn-outline"
-            style={{
-              fontSize: "0.85rem",
-              padding: "0.7rem 1.4rem",
-              background: "rgba(255,255,255,0.02)",
-            }}
-          >
-            REQUEST DEMO
-          </Link>
+            variant="outline"
+            rightIcon={false}
+            color="rgba(255, 255, 255, 0.14)"
+          />
         </motion.div>
 
         {/* Trust Badges */}
@@ -153,26 +95,14 @@ export function Hero() {
           initial="hidden"
           animate="show"
           custom={0.22}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
-            flexWrap: "wrap",
-            marginBottom: "5rem",
-          }}
+          className="flex items-center gap-6 flex-wrap mb-20"
         >
           {TRUST.map((t) => (
             <span
               key={t}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                fontSize: "0.8rem",
-                color: "var(--text-muted)",
-              }}
+              className="flex items-center gap-1.5 text-sm text-text-muted"
             >
-              <CheckCircle size={14} color="var(--brand)" />
+              <CheckCircle size={14} className="text-brand" />
               {t}
             </span>
           ))}
@@ -184,84 +114,28 @@ export function Hero() {
           initial="hidden"
           animate="show"
           custom={0.3}
-          style={{ position: "relative" }}
+          className="relative"
         >
           <div
-            className="corner-bracket"
+            className="corner-bracket relative rounded-sm overflow-hidden border border-white/[0.06]"
             style={{
-              position: "relative",
-              borderRadius: 4,
-              overflow: "hidden",
-              border: "1px solid rgba(255,255,255,0.06)",
               background: "rgba(0,0,0,0.4)",
               backdropFilter: "blur(4px)",
             }}
           >
-            {/* Top corner dots */}
-            <span
-              style={{
-                position: "absolute",
-                top: -1,
-                left: -1,
-                width: 6,
-                height: 6,
-                background: "var(--brand)",
-                borderRadius: 0,
-                zIndex: 2,
-              }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                top: -1,
-                right: -1,
-                width: 6,
-                height: 6,
-                background: "var(--brand)",
-                borderRadius: 0,
-                zIndex: 2,
-              }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                bottom: -1,
-                left: -1,
-                width: 6,
-                height: 6,
-                background: "var(--brand)",
-                borderRadius: 0,
-                zIndex: 2,
-              }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                bottom: -1,
-                right: -1,
-                width: 6,
-                height: 6,
-                background: "var(--brand)",
-                borderRadius: 0,
-                zIndex: 2,
-              }}
-            />
+            {/* Orange corner dots */}
+            <span className="absolute top-[-1px] left-[-1px] w-1.5 h-1.5 bg-brand z-10" />
+            <span className="absolute top-[-1px] right-[-1px] w-1.5 h-1.5 bg-brand z-10" />
+            <span className="absolute bottom-[-1px] left-[-1px] w-1.5 h-1.5 bg-brand z-10" />
+            <span className="absolute bottom-[-1px] right-[-1px] w-1.5 h-1.5 bg-brand z-10" />
 
-            {/* The actual dashboard image */}
             <Image
               src="https://framerusercontent.com/images/9LKnnWcx8OELyDZDpkOLbWnlkk.webp"
               alt="Aplix dashboard — API monitoring interface"
               width={1632}
               height={1227}
               priority
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                maxHeight: 540,
-                objectFit: "cover",
-                objectPosition: "top",
-              }}
+              className="w-full h-auto block max-h-[540px] object-cover object-top"
             />
           </div>
         </motion.div>

@@ -11,83 +11,31 @@ const LOGOS = [
   { name: "Imagine AI", icon: "◉" },
 ];
 
-// Double for seamless loop
 const DOUBLED = [...LOGOS, ...LOGOS, ...LOGOS];
 
 export function LogoCloud() {
   return (
-    <section
-      style={{
-        paddingBlock: "3.5rem",
-        borderTop: "1px solid rgba(255,255,255,0.07)",
-        borderBottom: "1px solid rgba(255,255,255,0.07)",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        className="container-main"
-        style={{ textAlign: "center", marginBottom: "1.5rem" }}
-      >
+    <section className="py-14 border-t border-b border-white/[0.07] overflow-hidden">
+      <div className="container-main text-center mb-6">
         <p className="label">Powering the world&apos;s best teams</p>
       </div>
 
       {/* Marquee */}
-      <div style={{ position: "relative", overflow: "hidden" }}>
-        {/* Fade edges */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            width: 120,
-            background: "linear-gradient(to right, #000, transparent)",
-            zIndex: 1,
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            width: 120,
-            background: "linear-gradient(to left, #000, transparent)",
-            zIndex: 1,
-            pointerEvents: "none",
-          }}
-        />
+      <div className="relative overflow-hidden">
+        <div className="fade-left" />
+        <div className="fade-right" />
 
         <motion.div
           animate={{ x: ["0%", "-33.333%"] }}
           transition={{ duration: 28, ease: "linear", repeat: Infinity }}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "2.5rem",
-            width: "max-content",
-          }}
+          className="flex items-center gap-10 w-max"
         >
           {DOUBLED.map((logo, i) => (
             <div
               key={i}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 7,
-                color: "rgba(255,255,255,0.35)",
-                fontSize: "0.85rem",
-                fontWeight: 500,
-                whiteSpace: "nowrap",
-                userSelect: "none",
-                transition: "color 0.2s",
-                padding: "0 0.75rem",
-              }}
+              className="flex items-center gap-1.5 text-white/35 text-sm font-medium whitespace-nowrap select-none px-3 transition-colors duration-200"
             >
-              <span style={{ fontSize: "1.1rem", opacity: 0.5 }}>
-                {logo.icon}
-              </span>
+              <span className="text-lg opacity-50">{logo.icon}</span>
               {logo.name}
             </div>
           ))}
