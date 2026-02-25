@@ -2,7 +2,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ApixLogo } from "@/shared/components/ApixLogo";
 import { Button } from "@/shared/components/Button";
-import { MovingDashedBorder } from "./MovingDashedBorder";
+import { MovingDashedBorder } from "@/shared/components/MovingDashedBorder";
 
 const NAV_ITEMS = [
   { label: "About", href: "/about" },

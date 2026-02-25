@@ -39,11 +39,6 @@ export function CornerBracket({
         initial: {
           x: 0,
           y: 0,
-          borderColor: color,
-          borderTopWidth: borders.borderTop ? thickness : 0,
-          borderLeftWidth: borders.borderLeft ? thickness : 0,
-          borderRightWidth: borders.borderRight ? thickness : 0,
-          borderBottomWidth: borders.borderBottom ? thickness : 0,
         },
         hover: {
           x: position.includes("left") ? 5 : -5,
@@ -64,6 +59,11 @@ export function CornerBracket({
       style={{
         width: size,
         height: size,
+        borderColor: color,
+        borderTopWidth: borders.borderTop ? thickness : 0,
+        borderLeftWidth: borders.borderLeft ? thickness : 0,
+        borderRightWidth: borders.borderRight ? thickness : 0,
+        borderBottomWidth: borders.borderBottom ? thickness : 0,
         borderStyle: "solid",
       }}
       transition={{ duration: 0.25, ease: "easeOut" }}

@@ -3,7 +3,11 @@
 import Image from "next/image";
 import { Button } from "@/shared/components/Button";
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import DashboardImage from "@/public/images/hero/dashboard.webp";
+import { NoCardIcon } from "@/public/images/logos/NoCardIcon";
+import { SetupIcon } from "@/public/images/logos/SetupIcon";
+import { CleanIcon } from "@/public/images/logos/CleanIcon";
+import { CornerBracket } from "@/shared/components/CornerBracket";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -19,9 +23,18 @@ const fadeUp = {
 };
 
 const TRUST = [
-  "No credit card required",
-  "Setup in under 5 minutes",
-  "Clean, light interface",
+  {
+    icon: <NoCardIcon />,
+    text: "No credit card required",
+  },
+  {
+    icon: <SetupIcon />,
+    text: "Setup in under 5 minutes",
+  },
+  {
+    icon: <CleanIcon />,
+    text: "Clean, light interface",
+  },
 ];
 
 export function Hero() {
@@ -46,48 +59,50 @@ export function Hero() {
       />
 
       <div className="container-main pt-24 pb-16 relative z-10">
-        {/* Headline */}
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={0}
-          className="heading-hero max-w-[700px] mb-6 font-bold"
-        >
-          Your API. Fully visible.
-          <br />
-          Always under control.
-        </motion.h1>
+        <div className="flex flex-col gap-[24px] mb-10 max-w-[550px]">
+          {/* Headline */}
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            custom={0}
+            className="heading-hero"
+          >
+            Your API. Fully visible.
+            <br />
+            Always under control.
+          </motion.h1>
 
-        {/* Sub-headline */}
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={0.08}
-          className="text-text-secondary text-lg leading-snug max-w-[520px] mb-9"
-        >
-          Track API traffic, latency, errors, and usage in real time. A
-          streamlined dashboard for teams focused on reliability.
-        </motion.p>
+          {/* Sub-headline */}
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            custom={0.08}
+            className="text-text-secondary text-[20px] leading-snug max-w-[550px]"
+          >
+            Track API traffic, latency, errors, and usage in real time.
+            <br /> A streamlined dashboard for teams focused on reliability.
+          </motion.p>
 
-        {/* CTAs */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={0.16}
-          className="flex items-center gap-3 flex-wrap mb-7"
-        >
-          <Button text="GET STARTED" href="/pricing" />
-          <Button
-            text="REQUEST DEMO"
-            href="/contact"
-            variant="outline"
-            rightIcon={false}
-            color="rgba(255, 255, 255, 0.14)"
-          />
-        </motion.div>
+          {/* CTAs */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            custom={0.16}
+            className="flex items-center gap-3 flex-wrap pt-2"
+          >
+            <Button text="GET STARTED" href="/pricing" />
+            <Button
+              text="REQUEST DEMO"
+              href="/contact"
+              variant="outline"
+              rightIcon={false}
+              color="rgba(255, 255, 255, 0.14)"
+            />
+          </motion.div>
+        </div>
 
         {/* Trust Badges */}
         <motion.div
@@ -99,11 +114,11 @@ export function Hero() {
         >
           {TRUST.map((t) => (
             <span
-              key={t}
-              className="flex items-center gap-1.5 text-sm text-text-muted"
+              key={t.text}
+              className="flex items-center gap-3 text-base text-white/60"
             >
-              <CheckCircle size={14} className="text-brand" />
-              {t}
+              {t.icon}
+              {t.text}
             </span>
           ))}
         </motion.div>
@@ -116,26 +131,24 @@ export function Hero() {
           custom={0.3}
           className="relative"
         >
+          <CornerBracket position="top-left" />
+          <CornerBracket position="top-right" />
+          <CornerBracket position="bottom-left" />
+          <CornerBracket position="bottom-right" />
           <div
-            className="corner-bracket relative rounded-sm overflow-hidden border border-white/[0.06]"
+            className="corner-bracket relative p-4  overflow-hidden border border-white/[0.06]"
             style={{
               background: "rgba(0,0,0,0.4)",
               backdropFilter: "blur(4px)",
             }}
           >
-            {/* Orange corner dots */}
-            <span className="absolute top-[-1px] left-[-1px] w-1.5 h-1.5 bg-brand z-10" />
-            <span className="absolute top-[-1px] right-[-1px] w-1.5 h-1.5 bg-brand z-10" />
-            <span className="absolute bottom-[-1px] left-[-1px] w-1.5 h-1.5 bg-brand z-10" />
-            <span className="absolute bottom-[-1px] right-[-1px] w-1.5 h-1.5 bg-brand z-10" />
-
             <Image
-              src="https://framerusercontent.com/images/9LKnnWcx8OELyDZDpkOLbWnlkk.webp"
+              src={DashboardImage}
               alt="Aplix dashboard — API monitoring interface"
-              width={1632}
+              width={1400}
               height={1227}
               priority
-              className="w-full h-auto block max-h-[540px] object-cover object-top"
+              className="w-full h-auto block object-cover object-center [corner-shape:inherit]"
             />
           </div>
         </motion.div>

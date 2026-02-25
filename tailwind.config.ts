@@ -34,6 +34,9 @@ const config: Config = {
           secondary: "#999999",
           muted: "#666666",
         },
+        icon: {
+          gray: "#7F7F7F",
+        },
       },
 
       /* ── Font family ─────────────────────────────── */
@@ -54,15 +57,15 @@ const config: Config = {
         sm: ["0.8rem", { lineHeight: "1.3rem" }],
         base: ["0.875rem", { lineHeight: "1.5rem" }],
         lg: ["0.95rem", { lineHeight: "1.5rem" }],
-        xl: ["1.05rem", { lineHeight: "1.5rem" }],
-        "2xl": ["1.1rem", { lineHeight: "1.5rem" }],
+        xl: ["1rem", { lineHeight: "1.5rem" }],
+        "2xl": ["1.25rem", { lineHeight: "1.2rem" }],
         "3xl": ["1.5rem", { lineHeight: "1.2rem" }],
         "4xl": ["1.8rem", { lineHeight: "1.15rem" }],
         "5xl": ["2rem", { lineHeight: "1.1rem" }],
         "6xl": ["2.5rem", { lineHeight: "1.05rem" }],
         "7xl": ["3rem", { lineHeight: "1rem" }],
         "8xl": ["3.5rem", { lineHeight: "1rem" }],
-        hero: ["clamp(2.4rem,6vw,4.2rem)", { lineHeight: "1.02" }],
+        hero: ["3.5rem", { lineHeight: "1.02" }],
         section: ["clamp(1.7rem,3.5vw,2.5rem)", { lineHeight: "1.15" }],
       },
 

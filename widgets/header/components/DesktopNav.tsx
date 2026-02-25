@@ -27,7 +27,7 @@ export function DesktopNav() {
 
       {/* CTA button */}
       <div className="ml-2">
-        <Button text="GET STARTED" href="/pricing" classNameContainer="ml-2" />
+        <Button text="GET STARTED" href="/pricing" />
       </div>
     </>
   );

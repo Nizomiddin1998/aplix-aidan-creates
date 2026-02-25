@@ -5,6 +5,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BarChart } from "./components/BarChart";
 import { StatTag } from "./components/StatTag";
+import { CornerBracket } from "@/shared/components/CornerBracket";
+import { MovingDashedBorder } from "@/shared/components/MovingDashedBorder";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -19,15 +21,14 @@ const fadeUp = {
   }),
 };
 
-const CARD_BASE =
-  "corner-bracket bg-bg-surface border border-border rounded-sm overflow-hidden relative";
+const CARD_BASE = "corner-bracket bg-bg-surface  overflow-hidden relative";
 
 export function BentoGrid() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="section section-border" ref={ref}>
+    <section className="section" ref={ref}>
       <div className="container-main">
         {/* Header */}
         <motion.div
@@ -35,17 +36,16 @@ export function BentoGrid() {
           initial="hidden"
           animate={inView ? "show" : "hidden"}
           custom={0}
-          className="mb-10 max-w-[560px]"
+          className="mb-10 max-w-[560px] flex flex-col gap-6"
         >
-          <p className="label mb-1.5">Features</p>
           <h2 className="heading-section">
-            See what&apos;s happening.{" "}
-            <span className="text-faded">As it happens.</span>
+            See what&apos;s happening.
+            <br />
+            As it happens.
           </h2>
-          <p className="text-text-secondary mt-3 text-sm leading-relaxed">
-            Designed for real-time insight. Metrics load instantly, charts stay
-            responsive, and the interface never gets in the way of your
-            workflow.
+          <p className="text-text-secondary  text-2xl leading-[1.3]">
+            Get all the signals to maintain your API's health, speed, and
+            reliability without sifting through logs or changing tools.
           </p>
         </motion.div>
 
@@ -59,10 +59,16 @@ export function BentoGrid() {
             custom={1}
             className={`${CARD_BASE} col-span-1 min-h-[300px] flex flex-col p-5`}
           >
-            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
+            <CornerBracket position="top-left" />
+            <CornerBracket position="top-right" />
+            <CornerBracket position="bottom-left" />
+            <CornerBracket position="bottom-right" />
+            <MovingDashedBorder />
+
+            <p className="text-xl font-semibold text-brand tracking-widest uppercase mb-1.5">
               Track API health
             </p>
-            <p className="text-text-secondary text-sm leading-relaxed mb-5">
+            <p className="text-text-secondary text-base leading-relaxed mb-5">
               Monitor traffic, response times, status codes, and error rates in
               one clear view.
             </p>
@@ -81,10 +87,15 @@ export function BentoGrid() {
             custom={2}
             className={`${CARD_BASE} col-span-2 min-h-[300px] p-5`}
           >
-            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
+            <CornerBracket position="top-left" />
+            <CornerBracket position="top-right" />
+            <CornerBracket position="bottom-left" />
+            <CornerBracket position="bottom-right" />
+            <MovingDashedBorder />
+            <p className="text-xl font-semibold text-brand tracking-widest uppercase mb-1.5">
               Backend at a glance
             </p>
-            <p className="text-text-secondary text-sm leading-relaxed mb-4">
+            <p className="text-text-secondary text-base leading-relaxed mb-4">
               Requests, performance, alerts, and usage, all summarized without
               losing detail.
             </p>
@@ -107,10 +118,15 @@ export function BentoGrid() {
             custom={3}
             className={`${CARD_BASE} col-span-1 min-h-[180px] p-5`}
           >
-            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
+            <CornerBracket position="top-left" />
+            <CornerBracket position="top-right" />
+            <CornerBracket position="bottom-left" />
+            <CornerBracket position="bottom-right" />
+            <MovingDashedBorder />
+            <p className="text-xl font-semibold text-brand tracking-widest uppercase mb-1.5">
               Spot issues early
             </p>
-            <p className="text-text-secondary text-sm leading-relaxed mb-5">
+            <p className="text-text-secondary text-base leading-relaxed mb-5">
               Alert thresholds surface anomalies before they become customer
               problems.
             </p>
@@ -128,10 +144,15 @@ export function BentoGrid() {
             custom={4}
             className={`${CARD_BASE} col-span-1 min-h-[180px] p-5`}
           >
-            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
+            <CornerBracket position="top-left" />
+            <CornerBracket position="top-right" />
+            <CornerBracket position="bottom-left" />
+            <CornerBracket position="bottom-right" />
+            <MovingDashedBorder />
+            <p className="text-xl font-semibold text-brand tracking-widest uppercase mb-1.5">
               Set it and forget it
             </p>
-            <p className="text-text-secondary text-sm leading-relaxed mb-5">
+            <p className="text-text-secondary text-base leading-relaxed mb-5">
               Automated dashboards that update as your API grows.
             </p>
             <div className="text-4xl font-bold tracking-tightest text-brand leading-none">
@@ -148,10 +169,15 @@ export function BentoGrid() {
             custom={5}
             className={`${CARD_BASE} col-span-1 min-h-[180px] p-5`}
           >
-            <p className="text-[0.7rem] font-semibold text-brand tracking-widest uppercase mb-1.5">
+            <CornerBracket position="top-left" />
+            <CornerBracket position="top-right" />
+            <CornerBracket position="bottom-left" />
+            <CornerBracket position="bottom-right" />
+            <MovingDashedBorder />
+            <p className="text-xl font-semibold text-brand tracking-widest uppercase mb-1.5">
               Latency tracking
             </p>
-            <p className="text-text-secondary text-sm leading-relaxed mb-5">
+            <p className="text-text-secondary text-base leading-relaxed mb-5">
               P50/P95/P99 breakdown across every endpoint, always fresh.
             </p>
             <div className="text-4xl font-bold tracking-tightest text-white leading-none">

@@ -4,9 +4,9 @@ import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ApixLogo } from "@/shared/components/ApixLogo";
 import { CornerBracket } from "@/shared/components/CornerBracket";
-import { MovingDashedBorder } from "./components/MovingDashedBorder";
 import { DesktopNav } from "./components/DesktopNav";
 import { MobileMenu } from "./components/MobileMenu";
+import { MovingDashedBorder } from "@/shared/components/MovingDashedBorder";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,10 +53,10 @@ export function Header() {
               borderRadius: 3,
             }}
           >
-            <CornerBracket position="top-left" />
-            <CornerBracket position="top-right" />
-            <CornerBracket position="bottom-left" />
-            <CornerBracket position="bottom-right" />
+            <CornerBracket position="top-left" animateHover />
+            <CornerBracket position="top-right" animateHover />
+            <CornerBracket position="bottom-left" animateHover />
+            <CornerBracket position="bottom-right" animateHover />
             <MovingDashedBorder />
 
             <ApixLogo />
