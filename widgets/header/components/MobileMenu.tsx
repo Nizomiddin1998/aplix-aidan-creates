@@ -101,17 +101,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               duration: 0.35,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="relative z-10 px-5 pb-8"
+            className="relative w-full z-10 px-5 pb-8"
           >
-            <div className="relative">
-              <MovingDashedBorder />
-              <Button
-                text="GET STARTED"
-                href="/pricing"
-                onClick={onClose}
-                className="w-full text-xs"
-              />
-            </div>
+            <Button
+              text="GET STARTED"
+              href="/pricing"
+              onClick={onClose}
+              classNameContainer="w-full min-w-full text-xs"
+            />
           </motion.div>
         </motion.div>
       )}

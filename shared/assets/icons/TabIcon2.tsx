@@ -1,0 +1,192 @@
+import React from "react";
+
+export const TabIcon2 = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+    {...props}
+  >
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M2.4 5.6h.008M2.4 8.8h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M2.4 12h.008M2.4 15.2h.008M2.4 18.4h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M2.4 21.6h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M5.6 5.6h.008M5.6 8.8h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M5.6 12h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".25"
+      strokeWidth="2"
+      d="M5.6 18.4h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M5.6 21.6h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M8.8 5.6h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".25"
+      strokeWidth="2"
+      d="M11.992 5.6H12"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M8.8 12h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".25"
+      strokeWidth="2"
+      d="M5.6 15.2h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M8.8 15.2h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M8.8 21.6h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M12 12h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".25"
+      strokeWidth="2"
+      d="M12 18.4h.008m-3.208 0h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M12 15.2h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M12 21.6h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M15.2 5.6h.008m-.008 9.6h.008M15.2 12h.008m-.008 6.4h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M15.2 21.6h.008m3.192-16h.008M5.6 2.4h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M2.4 2.4h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M8.8 2.4h.008M12 2.4h.008m3.192 0h.008m3.192 0h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M21.6 2.4h.008M18.4 12h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M18.4 8.8h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M18.4 15.2h.008m-.008 3.2h.008m3.192 3.2h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M18.4 21.6h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeOpacity=".01"
+      strokeWidth="2"
+      d="M21.6 5.6h.008M21.6 8.8h.008"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="2"
+      d="M21.6 12h.008m-.008 3.2h.008m-.008 3.2h.008M8.8 8.8h.008M12 8.8h.008m3.184 0h.008"
+    />
+  </svg>
+);

@@ -3,12 +3,17 @@ import { motion } from "framer-motion";
 
 type Position = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 
-interface CornerBracketProps {
+interface CornerBracketProps extends React.ComponentPropsWithoutRef<
+  typeof motion.span
+> {
   position: Position;
   size?: number;
   color?: string;
   thickness?: number;
   animateHover?: boolean;
+  animateHoverColor?: string;
+  x?: number;
+  y?: number;
 }
 
 const positionClasses: Record<Position, string> = {
@@ -31,6 +36,11 @@ export function CornerBracket({
   color = "#f54900",
   thickness = 0.5,
   animateHover = false,
+  animateHoverColor = "#ffffff",
+  className = "",
+  x = 5,
+  y = 5,
+  ...props
 }: CornerBracketProps) {
   const borders = positionBorders[position];
 
@@ -41,9 +51,9 @@ export function CornerBracket({
           y: 0,
         },
         hover: {
-          x: position.includes("left") ? 5 : -5,
-          y: position.includes("top") ? 5 : -5,
-          borderColor: "#ffffff",
+          x: position.includes("left") ? x : -x,
+          y: position.includes("top") ? y : -y,
+          borderColor: animateHoverColor,
           borderTopWidth: borders.borderTop ? 1 : 0,
           borderLeftWidth: borders.borderLeft ? 1 : 0,
           borderRightWidth: borders.borderRight ? 1 : 0,
@@ -55,7 +65,7 @@ export function CornerBracket({
   return (
     <motion.span
       variants={variants}
-      className={`absolute pointer-events-none z-[11] ${positionClasses[position]}`}
+      className={`absolute pointer-events-none z-[11] ${positionClasses[position]} ${className}`}
       style={{
         width: size,
         height: size,
@@ -67,6 +77,7 @@ export function CornerBracket({
         borderStyle: "solid",
       }}
       transition={{ duration: 0.25, ease: "easeOut" }}
+      {...props}
     />
   );
 }

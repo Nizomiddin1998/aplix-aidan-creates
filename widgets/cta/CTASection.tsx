@@ -11,28 +11,27 @@ export function CTASection() {
 
   return (
     <section
-      className="section section-border relative overflow-hidden"
+      className="section container-main relative flex gap-6 overflow-hidden"
       ref={ref}
     >
-      {/* Three.js Background */}
-      <div className="absolute top-1/2 -translate-y-1/2 -right-[15%] w-[800px] h-[800px] pointer-events-none opacity-60 z-0">
-        <ParticleSphere />
-      </div>
+      <div className="relative flex flex-col justify-center overflow-hidden h-[500px]">
+        {/* Three.js Background */}
 
-      <div className="container-main relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-[600px]"
+          className="max-w-[500px] flex flex-col gap-8"
         >
-          <h2 className="heading-section mb-6">
-            Start monitoring your API with confidence.
-          </h2>
-          <p className="text-text-secondary text-lg leading-relaxed mb-10 max-w-[480px]">
-            Get real-time visibility into traffic, performance, and errors. No
-            setup hassle. No hidden complexity.
-          </p>
+          <div className="flex flex-col gap-2.5">
+            <h2 className="heading-section">
+              Start monitoring your API with confidence.
+            </h2>
+            <h5 className="text-text-secondary text-2xl font-normal leading-[1.2]">
+              Get real-time visibility into traffic, performance, and errors. No
+              setup hassle. No hidden complexity.
+            </h5>
+          </div>
 
           <div className="flex items-center gap-3">
             <Button text="GET STARTED" href="/pricing" />
@@ -45,6 +44,15 @@ export function CTASection() {
             />
           </div>
         </motion.div>
+      </div>
+      <div className="flex flex-col flex-1 gap-10">
+        <div className="relative max-w-[530px] h-[530px] aspect-square">
+          <div className="relative flex items-center justify-center w-full h-full overflow-visible">
+            <div className="relative w-full h-full overflow-visible">
+              <ParticleSphere />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

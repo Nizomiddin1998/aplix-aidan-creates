@@ -17,9 +17,9 @@ export default function Home() {
       <LogoCloud />
       <BentoGrid />
       <FeaturesTab />
-      <Testimonials />
       <Pricing />
       <FAQ />
+      <Testimonials />
       <CTASection />
       <Footer />
     </main>

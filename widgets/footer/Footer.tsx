@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Twitter, Linkedin, Github } from "lucide-react";
 import { ApixLogo } from "@/shared/components/ApixLogo";
+import { Button } from "@/shared/components/Button";
 
 const LINKS = [
   { label: "About", href: "/about" },
@@ -44,15 +45,13 @@ export function Footer() {
             <p className="text-xs font-semibold text-white mb-3">
               Join our newsletter
             </p>
-            <div className="corner-bracket flex gap-1">
+            <div className="flex gap-1">
               <input
                 type="email"
                 placeholder="name@email.com"
                 className="flex-1 bg-white/[0.04] border border-white/10 rounded-sm px-3 py-2 text-white text-xs outline-none placeholder:text-white/30 focus:border-white/20 transition-colors"
               />
-              <button className="btn-brand px-4 py-2 text-[0.75rem]">
-                SUBSCRIBE
-              </button>
+              <Button text="Thank you" rightIcon={false} />
             </div>
             <p className="text-[0.65rem] text-white/40 mt-2">
               By clicking, you&apos;re agreeing to our{" "}
@@ -71,19 +70,22 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-white/[0.06]">
           <div className="flex items-center gap-2 text-[0.75rem] text-white/40">
             <span>
-              © 2026 Aplix by <span className="text-brand">AidanCreates</span>
+              © 2026 Aplix by{" "}
+              <span className="text-brand hover:text-text-secondary cursor-pointer transition-colors">
+                AidanCreates
+              </span>
             </span>
             <span className="mx-1">·</span>
             <Link
               href="/terms"
-              className="text-inherit no-underline hover:text-white/60 transition-colors"
+              className="text-text-secondary no-underline hover:text-brand transition-colors"
             >
               Terms
             </Link>
             <span className="mx-1">·</span>
             <Link
               href="/privacy"
-              className="text-inherit no-underline hover:text-white/60 transition-colors"
+              className="text-text-secondary no-underline hover:text-brand transition-colors"
             >
               Privacy
             </Link>

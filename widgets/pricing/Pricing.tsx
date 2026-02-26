@@ -66,23 +66,22 @@ export function Pricing() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="section section-border" id="pricing" ref={ref}>
-      <div className="container-main">
+    <section className="section" id="pricing" ref={ref}>
+      <div className="container-main flex flex-col gap-20">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-14"
+          className="max-w-[480px] flex flex-col gap-6"
         >
-          <p className="label mb-1.5">Pricing</p>
-          <h2 className="heading-section max-w-[480px]">
-            All core benefits in one unified platform
+          <h2 className="heading-section ">
+            Simple pricing for clear API insight
           </h2>
-          <p className="text-text-secondary mt-3 max-w-[420px] text-sm leading-relaxed">
+          <h5 className="text-text-secondary text-2xl leading-[1.2] font-normal">
             Choose a plan that fits your team and scale as your API grows. No
             hidden fees. No complicated limits.
-          </p>
+          </h5>
         </motion.div>
 
         {/* Plans */}
@@ -93,16 +92,13 @@ export function Pricing() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className={`corner-bracket relative flex flex-col rounded-sm p-8 border ${
+              className={`corner-bracket relative flex flex-col rounded-sm px-5 py-6 border ${
                 plan.popular
                   ? "bg-brand/[0.04] border-brand/25"
                   : "bg-bg-surface border-border"
               }`}
             >
               {/* Top accent bar for popular */}
-              {plan.popular && (
-                <div className="absolute top-0 left-px right-px h-0.5 bg-brand z-10" />
-              )}
 
               <div className="mb-7">
                 {/* Name + badge */}
@@ -137,7 +133,7 @@ export function Pricing() {
               </div>
 
               {/* Divider */}
-              <hr className="border-none border-t border-white/[0.07] mb-5" />
+              <hr className="border-0  border-t border-white/[0.07] mb-5" />
 
               {/* Features */}
               <div className="flex flex-col gap-2.5 mb-8 flex-1">
@@ -160,8 +156,13 @@ export function Pricing() {
                 href={plan.ctaHref}
                 variant={plan.popular ? "brand" : "outline"}
                 className="w-full py-3 text-xs"
-                showBrackets={false}
+                showBrackets={true}
                 rightIcon={false}
+                color={
+                  plan.popular
+                    ? "rgba(255,255,255,0.5)"
+                    : `rgba(255,255,255,0.1)`
+                }
               />
             </motion.div>
           ))}

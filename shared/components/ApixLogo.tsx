@@ -1,4 +1,4 @@
-import { AplixIcon } from "@/public/images/logos/AplixIcon";
+import { AplixIcon } from "@/shared/assets/logos/AplixIcon";
 import Link from "next/link";
 
 interface ApixLogoProps {

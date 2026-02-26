@@ -6,25 +6,32 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Feature1 from "@/public/images/features/feature-1.webp";
 import Feature2 from "@/public/images/features/feature-2.webp";
 import Feature3 from "@/public/images/features/feature-3.webp";
+import { CornerBracket } from "@/shared/components/CornerBracket";
+import { MovingDashedBorder } from "@/shared/components/MovingDashedBorder";
+import { TabIcon1 } from "@/shared/assets/icons/TabIcon1";
+import { TabIcon2 } from "@/shared/assets/icons/TabIcon2";
+import { TabIcon3 } from "@/shared/assets/icons/TabIcon3";
+import { JoinCornerBacket } from "@/shared/components/JoinCornerBacket";
+import { SupportCards } from "./SupportCards";
 
 const TABS = [
   {
     id: 0,
-    icon: "/images/features/tab-icon-1.svg",
+    icon: TabIcon1,
     title: "Sign up and connect",
     desc: "Create an account, paste in your API key, and Aplix starts pulling in data immediately. No complex setup, no DevOps required.",
     image: Feature1,
   },
   {
     id: 1,
-    icon: "/images/features/tab-icon-2.svg",
+    icon: TabIcon2,
     title: "Metrics organize themselves",
     desc: "Traffic, latency, errors, and usage patterns are automatically grouped and visualized. You get a clear picture of your API without manually building dashboards.",
     image: Feature2,
   },
   {
     id: 2,
-    icon: "/images/features/tab-icon-3.svg",
+    icon: TabIcon3,
     title: "Act with confidence",
     desc: "Set alert thresholds, share dashboards with your team, and export reports. Aplix keeps you informed so you can move fast and fix issues early.",
     image: Feature3,
@@ -52,7 +59,7 @@ export function FeaturesTab() {
   }, [startInterval]);
 
   return (
-    <section className="section" ref={ref}>
+    <section className="section flex flex-col gap-20" ref={ref}>
       <div className="container-main">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* ── LEFT COLUMN ── */}
@@ -64,15 +71,15 @@ export function FeaturesTab() {
               transition={{ duration: 0.5 }}
               className="flex flex-col gap-4"
             >
-              <h2 className="heading-section">
+              <h2 className=" text-[40px] leading-[1.2] font-[500]">
                 From setup to insight.
                 <br />
                 Faster than you expect.
               </h2>
-              <p className="text-text-secondary text-xl leading-relaxed max-w-[400px]">
+              <h5 className="text-[#ffffffb3] text-[20px] leading-[1.5] max-w-[450px]">
                 Everything is designed to get you from&nbsp; zero to clarity
                 with minimal effort.
-              </p>
+              </h5>
             </motion.div>
 
             {/* Tab list */}
@@ -82,45 +89,69 @@ export function FeaturesTab() {
                 return (
                   <motion.div
                     key={tab.id}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: i * 0.1, duration: 0.4 }}
+                    initial="initial"
+                    animate={inView ? "animate" : "initial"}
+                    whileHover="hover"
+                    variants={{
+                      initial: { opacity: 0, x: -16 },
+                      animate: {
+                        opacity: 1,
+                        x: 0,
+                        transition: { delay: i * 0.1, duration: 0.4 },
+                      },
+                    }}
                     onClick={() => {
                       setActive(tab.id);
                       startInterval();
                     }}
-                    className="flex items-center gap-4 px-3 py-3 cursor-pointer transition-all duration-200"
-                    style={{
-                      borderLeft: `2px solid ${
-                        isActive ? "#f54900" : "rgba(255,255,255,0.08)"
-                      }`,
-                    }}
+                    className="relative flex items-center gap-4 px-3 py-3 cursor-pointer transition-colors duration-200 group"
+                    style={{}}
                   >
-                    {/* Icon box */}
+                    {/* Background Left Border (Inactive & Base) */}
                     <div
-                      className="flex-shrink-0 w-[48px] h-[48px] flex items-center justify-center border transition-colors duration-200"
+                      className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-200"
                       style={{
-                        borderColor: isActive
-                          ? "rgba(245,73,0,0.6)"
-                          : "rgba(255,255,255,0.1)",
                         background: isActive
-                          ? "rgba(245,73,0,0.08)"
-                          : "rgba(255,255,255,0.03)",
+                          ? "transparent"
+                          : "rgba(255,255,255,0.08)",
                       }}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={tab.icon}
-                        alt={tab.title}
-                        width={24}
-                        height={24}
-                        style={{
-                          filter: isActive
-                            ? "brightness(1) sepia(1) saturate(10) hue-rotate(-10deg)"
-                            : "brightness(0.4)",
-                          transition: "filter 0.2s ease",
-                        }}
+                    />
+
+                    {/* Active / Hover Left Border (Fills from bottom) */}
+                    <motion.div
+                      className="absolute left-0 bottom-0 w-[2px] bg-[#f54900]"
+                      variants={{
+                        initial: { height: isActive ? "100%" : "0%" },
+                        hover: { height: isActive ? "100%" : "100%" },
+                      }}
+                      initial={false}
+                      animate={{ height: isActive ? "100%" : "0%" }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    />
+
+                    {/* Icon box */}
+                    <div className="flex-shrink-0 relative w-[48px] h-[48px] flex items-center justify-center  transition-all duration-200 bg-white/10">
+                      {/* Corner Brackets */}
+                      <JoinCornerBacket
+                        x={3}
+                        y={3}
+                        animateHover={isActive ? false : true}
+                        color={isActive ? "#f54900" : "rgba(255,255,255,0.1)"}
+                        animateHoverColor={"#f54900"}
                       />
+                      {isActive && <MovingDashedBorder />}
+
+                      {/* Icon */}
+                      <motion.div
+                        className="transition-colors duration-200 group-hover:text-white"
+                        style={{
+                          color: isActive
+                            ? "#F54900"
+                            : "rgba(255,255,255,0.45)",
+                        }}
+                      >
+                        <tab.icon className="w-6 h-6" />
+                      </motion.div>
                     </div>
 
                     {/* Title */}
@@ -145,28 +176,30 @@ export function FeaturesTab() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hidden md:block relative"
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.35 }}
-                className="relative w-full aspect-[4/3] overflow-hidden"
-                style={{ background: "rgba(0,0,0,0.3)" }}
-              >
-                <Image
-                  src={TABS[active].image}
-                  alt={TABS[active].title}
-                  fill
-                  className="object-cover object-center"
-                  // sizes="(max-width: 768px) 100vw, "
-                />
-              </motion.div>
-            </AnimatePresence>
+            <div className="w-full relative min-h-[300px] md:min-h-[400px] lg:min-h-[500px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute inset-0 w-full h-full flex items-center justify-center p-6 lg:p-12"
+                >
+                  <Image
+                    src={TABS.find((t) => t.id === active)?.image || Feature1}
+                    alt="Feature preview"
+                    className="w-full h-auto object-contain max-h-[100%]"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
         </div>
       </div>
+      {/* ── SUPPORT CARDS ROW ── */}
+      <SupportCards />
     </section>
   );
 }

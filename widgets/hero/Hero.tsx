@@ -4,9 +4,9 @@ import Image from "next/image";
 import { Button } from "@/shared/components/Button";
 import { motion } from "framer-motion";
 import DashboardImage from "@/public/images/hero/dashboard.webp";
-import { NoCardIcon } from "@/public/images/logos/NoCardIcon";
-import { SetupIcon } from "@/public/images/logos/SetupIcon";
-import { CleanIcon } from "@/public/images/logos/CleanIcon";
+import { NoCardIcon } from "@/shared/assets/logos/NoCardIcon";
+import { SetupIcon } from "@/shared/assets/logos/SetupIcon";
+import { CleanIcon } from "@/shared/assets/logos/CleanIcon";
 import { CornerBracket } from "@/shared/components/CornerBracket";
 
 const fadeUp = {

@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Aplix — API Monitoring & Analytics Platform",
+    default: "Aplix | Aidan Creates",
     template: "%s | Aplix",
   },
   description:
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Aplix — API Monitoring & Analytics Platform",
+    title: "Aplix | Aidan Creates",
     description:
       "Your API. Fully visible. Always under control. Monitor uptime, latency, and error rates at a glance.",
     siteName: "Aplix",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aplix — API Monitoring Platform",
+    title: "Aplix | Aidan Creates",
     description: "Your API. Fully visible. Always under control.",
   },
 };

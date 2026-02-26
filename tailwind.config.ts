@@ -31,7 +31,7 @@ const config: Config = {
         },
         text: {
           primary: "#ffffff",
-          secondary: "#999999",
+          secondary: "#ffffffb3",
           muted: "#666666",
         },
         icon: {
@@ -46,6 +46,10 @@ const config: Config = {
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
           "sans-serif",
         ],
       },

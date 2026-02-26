@@ -73,68 +73,65 @@ export function Testimonials() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      id="reviews"
-      ref={ref}
-      className="py-28 section-border overflow-hidden"
-    >
+    <section id="reviews" ref={ref} className="section overflow-hidden">
       {/* Section header */}
       <div className="container-main mb-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
+          className="flex flex-col gap-6 max-w-[500px]"
         >
-          <p className="label mb-1.5">Reviews</p>
-          <h2 className="heading-section max-w-[420px]">
-            Our customer reviews
-          </h2>
-          <p className="text-text-secondary mt-3 max-w-[400px] text-sm leading-relaxed">
-            See what developers, DevOps engineers, and CTOs are saying about
-            Aplix.
-          </p>
+          <h2 className="heading-section ">Our customer reviews</h2>
+          <h5 className="text-text-secondary font-[400] text-2xl leading-[1.3]">
+            See how teams use Aplix to monitor APIs, spot issues early, and move
+            faster with confidence.
+          </h5>
         </motion.div>
       </div>
 
       {/* Row 1 — scrolls left */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="relative"
-      >
-        <div className="fade-left" />
-        <div className="fade-right" />
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 40, ease: "linear", repeat: Infinity }}
-          className="flex gap-3 w-max pb-3"
-        >
-          {ROW1.map((item, i) => (
-            <TestimonialCard key={i} item={item} />
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Row 2 — scrolls right */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.6, delay: 0.35 }}
-        className="relative mt-3"
-      >
-        <div className="fade-left" />
-        <div className="fade-right" />
-        <motion.div
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ duration: 40, ease: "linear", repeat: Infinity }}
-          className="flex gap-3 w-max"
-        >
-          {ROW2.map((item, i) => (
-            <TestimonialCard key={i} item={item} />
-          ))}
-        </motion.div>
-      </motion.div>
+      <div className="container-main ">
+        <div className="relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="fade-left" />
+            <div className="fade-right" />
+            <motion.div
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+              className="flex gap-3 w-max pb-3"
+            >
+              {ROW1.map((item, i) => (
+                <TestimonialCard key={i} item={item} />
+              ))}
+            </motion.div>
+          </motion.div>
+          {/* Row 2 — scrolls right */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="relative mt-3"
+          >
+            <div className="fade-left" />
+            <div className="fade-right" />
+            <motion.div
+              animate={{ x: ["-50%", "0%"] }}
+              transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+              className="flex gap-3 w-max"
+            >
+              {ROW2.map((item, i) => (
+                <TestimonialCard key={i} item={item} />
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -33,7 +33,7 @@ export function Header() {
     <>
       {/* ── Floating Navbar ── */}
       <div
-        className="fixed z-[100] top-6 left-1/2 -translate-x-1/2 pointer-events-none"
+        className="fixed z-[100]  top-6 left-1/2 -translate-x-1/2 pointer-events-none"
         style={{ width: isMobile ? "calc(100% - 32px)" : "auto" }}
       >
         <motion.header
@@ -46,7 +46,7 @@ export function Header() {
             className="relative flex items-center justify-between"
             style={{
               gap: isMobile ? 0 : 20,
-              padding: isMobile ? "0 16px" : "16px",
+              padding: isMobile ? "16px" : "16px",
               background: "rgba(0,0,0,0.55)",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
@@ -57,6 +57,25 @@ export function Header() {
             <CornerBracket position="top-right" animateHover />
             <CornerBracket position="bottom-left" animateHover />
             <CornerBracket position="bottom-right" animateHover />
+
+            {/* Corner dots — independent of CornerBracket */}
+            <span
+              className="absolute w-[4px] h-[4px] bg-text-secondary/30 rounded-full"
+              style={{ top: 4, left: 4 }}
+            />
+            <span
+              className="absolute w-[4px] h-[4px] bg-text-secondary/30 rounded-full"
+              style={{ top: 4, right: 4 }}
+            />
+            <span
+              className="absolute w-[4px] h-[4px] bg-text-secondary/30 rounded-full"
+              style={{ bottom: 4, left: 4 }}
+            />
+            <span
+              className="absolute w-[4px] h-[4px] bg-text-secondary/30 rounded-full"
+              style={{ bottom: 4, right: 4 }}
+            />
+
             <MovingDashedBorder />
 
             <ApixLogo />
