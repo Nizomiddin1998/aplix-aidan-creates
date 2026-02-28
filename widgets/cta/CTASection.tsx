@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/shared/components/Button";
 import { ParticleSphere } from "./ParticleSphere";
+import { StarField } from "@/widgets/hero/StarField";
 
 export function CTASection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -12,9 +13,10 @@ export function CTASection() {
   return (
     <section className="section" ref={ref}>
       <div className="container-main relative flex max-[809.98px]:flex-col gap-6 max-[809.98px]:gap-8 overflow-hidden">
+        {/* Star field background behind the sphere */}
+        <StarField />
         <div className="relative flex flex-col max-[809.98px]:w-full justify-center overflow-hidden min-[809.98px]:h-[530px]">
           {/* Three.js Background */}
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
